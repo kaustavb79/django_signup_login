@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login Page</title>
+        <style>
+            body{ text-align:center; padding-top:100px; background-color:#95e880;}
+        </style>
+    </head>
+    <body>
+        <h1>LOGIN</h1>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <label for="user_name">Username</label>&nbsp;&nbsp;&nbsp;
+            <input type="text" name="username" id="user_name" placeholder="Enter Username" required/><br><br>
+            <label for="pass_word">Passowrd</label>&nbsp;&nbsp;&nbsp;
+            <input type="password" id="pass_word" name="password" placeholder="Enter Password" required/><br><br>
+            <button type="submit">Log in</button>
+        </form>
+    <br>
+    <a href="{% url 'register' %}">New User?? Click Here</a>
+    <div>
+        {% for error in messages %}
+           <h3>{{error}}</h3>
+        {% endfor %}
+    </div>
+    </body>
+</html>
